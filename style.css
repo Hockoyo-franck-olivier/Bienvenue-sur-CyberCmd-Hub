@@ -1,13 +1,66 @@
-body{
-    background-color: #0d1117;
-    color: #e6edf3;
+:root {
+    --couleur-fond: #0d1117;
+    --couleur-texte: #e6edf3;
+    --couleur-accent: #58a6ff;
+    --couleur-carte: #161b22;
+    --couleur-bordure: #30363d;
+}
+
+body {
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-h1{
+h1 {
     text-align: center;
     padding: 30px 0;
-    color: #58a6ff;
+    color: var(--couleur-accent);
+}
+
+.carte-commande {
+    background-color: var(--couleur-carte);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.entete-carte {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.badge-categorie,
+.badge-risque {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.badge-categorie {
+    background-color: var(--couleur-accent);
+    color: var(--couleur-fond);
+}
+
+.badge-risque {
+    border: 1px solid var(--couleur-bordure);
+    color: var(--couleur-texte);
+}
+
+.nom-commande {
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+    background-color: var(--couleur-fond);
+    padding: 8px 10px;
+    border-radius: 4px;
+}
+
+.description-commande {
+    font-size: 14px;
+    line-height: 1.5;
 }

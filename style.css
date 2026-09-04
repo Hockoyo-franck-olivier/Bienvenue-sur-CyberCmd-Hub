@@ -73,3 +73,16 @@ h1 {
     margin: 20px auto;
     padding: 0 20px;
 }
+
+#recherche {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto 0;
+    padding: 10px 14px;
+    font-size: 15px;
+    background-color: var(--couleur-carte);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 6px;
+    color: var(--couleur-texte);
+}

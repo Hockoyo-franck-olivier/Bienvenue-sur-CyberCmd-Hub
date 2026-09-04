@@ -86,3 +86,28 @@ h1 {
     border-radius: 6px;
     color: var(--couleur-texte);
 }
+
+.filtres-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 1000px;
+    margin: 16px auto 0;
+    padding: 0 20px;
+}
+
+.bouton-filtre {
+    background-color: transparent;
+    border: 1px solid var(--couleur-bordure);
+    color: var(--couleur-texte);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.bouton-filtre.actif {
+    background-color: var(--couleur-accent);
+    color: var(--couleur-fond);
+    border-color: var(--couleur-accent);
+}

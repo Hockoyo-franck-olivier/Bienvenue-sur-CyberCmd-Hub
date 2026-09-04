@@ -1,4 +1,5 @@
 let toutesLesCommandes = [];
+let categorieActive = 'toutes';
 
 function afficherCommandes(liste) {
     const grille = document.getElementById('grille');
@@ -18,23 +19,53 @@ function afficherCommandes(liste) {
     });
 }
 
+function appliquerFiltres() {
+    const texteRecherche = document.getElementById('recherche').value.toLowerCase();
+
+    const resultats = toutesLesCommandes.filter(commande => {
+        const correspondTexte =
+            commande.nom.toLowerCase().includes(texteRecherche) ||
+            commande.description.toLowerCase().includes(texteRecherche);
+
+        const correspondCategorie =
+            categorieActive === 'toutes' || commande.categorie === categorieActive;
+
+        return correspondTexte && correspondCategorie;
+    });
+
+    afficherCommandes(resultats);
+}
+
+function creerBoutonsFiltres(commandes) {
+    const categories = ['toutes', ...new Set(commandes.map(commande => commande.categorie))];
+    const conteneurFiltres = document.getElementById('filtres');
+
+    categories.forEach(categorie => {
+        const bouton = document.createElement('button');
+        bouton.textContent = categorie === 'toutes' ? 'Toutes' : categorie;
+        bouton.classList.add('bouton-filtre');
+        if (categorie === categorieActive) {
+            bouton.classList.add('actif');
+        }
+
+        bouton.addEventListener('click', () => {
+            categorieActive = categorie;
+            document.querySelectorAll('.bouton-filtre').forEach(b => b.classList.remove('actif'));
+            bouton.classList.add('actif');
+            appliquerFiltres();
+        });
+
+        conteneurFiltres.appendChild(bouton);
+    });
+}
+
 fetch('commandes.json')
     .then(reponse => reponse.json())
     .then(commandes => {
         toutesLesCommandes = commandes;
         afficherCommandes(toutesLesCommandes);
+        creerBoutonsFiltres(toutesLesCommandes);
     })
     .catch(erreur => console.error('Erreur de chargement des commandes :', erreur));
 
-    
-    
-    document.getElementById('recherche').addEventListener('input', (evenement) => {
-    const texteRecherche = evenement.target.value.toLowerCase();
-
-    const resultats = toutesLesCommandes.filter(commande =>
-        commande.nom.toLowerCase().includes(texteRecherche) ||
-        commande.description.toLowerCase().includes(texteRecherche)
-    );
-
-    afficherCommandes(resultats);
-});
+document.getElementById('recherche').addEventListener('input', appliquerFiltres);

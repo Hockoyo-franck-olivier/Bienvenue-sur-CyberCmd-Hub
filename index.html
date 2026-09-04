@@ -9,36 +9,9 @@
     <h1>Bienvenue sur CyberCmd Hub</h1>
 
         <main>
-    <div class="grille-commandes">
-
-        <div class="carte-commande">
-            <div class="entete-carte">
-                <span class="badge-categorie">Reconnaissance</span>
-                <span class="badge-risque">Discret</span>
-            </div>
-            <p class="nom-commande">whois exemple.com</p>
-            <p class="description-commande">Récupère les informations d'enregistrement d'un nom de domaine : propriétaire, dates de création, serveurs DNS.</p>
-        </div>
-
-        <div class="carte-commande">
-            <div class="entete-carte">
-                <span class="badge-categorie">Réseau</span>
-                <span class="badge-risque">Bruyant</span>
-            </div>
-            <p class="nom-commande">nmap -sV -p- 192.168.1.1</p>
-            <p class="description-commande">Scanne tous les ports d'une machine et identifie les services actifs.</p>
-        </div>
-
-        <div class="carte-commande">
-            <div class="entete-carte">
-                <span class="badge-categorie">Escalade de privilèges</span>
-                <span class="badge-risque">Discret</span>
-            </div>
-            <p class="nom-commande">sudo -l</p>
-            <p class="description-commande">Liste les commandes que l'utilisateur actuel peut exécuter en tant qu'administrateur (sudo).</p>
-        </div>
-
-    </div>
+    <div class="grille-commandes" id="grille"></div>
 </main>
+
+     <script src="script.js"></script>
 </body>
 </html>

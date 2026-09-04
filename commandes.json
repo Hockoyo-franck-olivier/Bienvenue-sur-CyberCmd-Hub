@@ -1,0 +1,20 @@
+[
+    {
+        "nom": "whois exemple.com",
+        "categorie": "Reconnaissance",
+        "risque": "Discret",
+        "description": "Récupère les informations d'enregistrement d'un nom de domaine : propriétaire, dates de création, serveurs DNS."
+    },
+    {
+        "nom": "nmap -sV -p- 192.168.1.1",
+        "categorie": "Réseau",
+        "risque": "Bruyant",
+        "description": "Scanne tous les ports d'une machine et identifie les services actifs."
+    },
+    {
+        "nom": "sudo -l",
+        "categorie": "Escalade de privilèges",
+        "risque": "Discret",
+        "description": "Liste les commandes que l'utilisateur actuel peut exécuter en tant qu'administrateur (sudo)."
+    }
+]

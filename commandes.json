@@ -16,5 +16,11 @@
         "categorie": "Escalade de privilèges",
         "risque": "Discret",
         "description": "Liste les commandes que l'utilisateur actuel peut exécuter en tant qu'administrateur (sudo)."
+    },
+    {
+        "nom": "gobuster dir -u http://cible.com -w wordlist.txt",
+        "categorie": "Web",
+        "risque": "Bruyant",
+        "description": "Teste une liste de mots pour découvrir des répertoires et fichiers cachés ou non répertoriés sur un site web."
     }
 ]

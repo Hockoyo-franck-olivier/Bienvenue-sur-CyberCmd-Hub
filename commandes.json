@@ -1,26 +1,60 @@
 [
-    {
-        "nom": "whois exemple.com",
-        "categorie": "Reconnaissance",
-        "risque": "Discret",
-        "description": "Récupère les informations d'enregistrement d'un nom de domaine : propriétaire, dates de création, serveurs DNS."
-    },
-    {
-        "nom": "nmap -sV -p- 192.168.1.1",
-        "categorie": "Réseau",
-        "risque": "Bruyant",
-        "description": "Scanne tous les ports d'une machine et identifie les services actifs."
-    },
-    {
-        "nom": "sudo -l",
-        "categorie": "Escalade de privilèges",
-        "risque": "Discret",
-        "description": "Liste les commandes que l'utilisateur actuel peut exécuter en tant qu'administrateur (sudo)."
-    },
-    {
-        "nom": "gobuster dir -u http://cible.com -w wordlist.txt",
-        "categorie": "Web",
-        "risque": "Bruyant",
-        "description": "Teste une liste de mots pour découvrir des répertoires et fichiers cachés ou non répertoriés sur un site web."
-    }
+    { "nom": "whois exemple.com", "categorie": "Reconnaissance", "risque": "Discret", "description": "Récupère les informations d'enregistrement d'un nom de domaine : propriétaire, dates de création, serveurs DNS." },
+    { "nom": "dig exemple.com ANY", "categorie": "Reconnaissance", "risque": "Discret", "description": "Interroge les serveurs DNS pour récupérer tous les enregistrements associés à un domaine." },
+    { "nom": "theHarvester -d exemple.com -b google", "categorie": "Reconnaissance", "risque": "Discret", "description": "Collecte des emails, sous-domaines et noms liés à une cible à partir de sources publiques (OSINT)." },
+    { "nom": "subfinder -d exemple.com", "categorie": "Reconnaissance", "risque": "Discret", "description": "Découvre les sous-domaines d'un domaine cible en croisant plusieurs sources passives." },
+    { "nom": "traceroute exemple.com", "categorie": "Reconnaissance", "risque": "Discret", "description": "Affiche le chemin réseau, c'est-à-dire les routeurs traversés, jusqu'à une cible." },
+
+    { "nom": "nmap -sV -p- 192.168.1.1", "categorie": "Réseau", "risque": "Bruyant", "description": "Scanne tous les ports d'une machine et identifie les services actifs." },
+    { "nom": "nmap -sn 192.168.1.0/24", "categorie": "Réseau", "risque": "Discret", "description": "Découvre les machines actives sur un réseau local sans scanner leurs ports (ping scan)." },
+    { "nom": "tcpdump -i eth0 -w capture.pcap", "categorie": "Réseau", "risque": "Discret", "description": "Capture le trafic réseau en direct et l'enregistre dans un fichier pour analyse." },
+    { "nom": "arp-scan --localnet", "categorie": "Réseau", "risque": "Bruyant", "description": "Envoie des requêtes ARP pour lister rapidement les appareils connectés au réseau local." },
+    { "nom": "netcat -lvnp 4444", "categorie": "Réseau", "risque": "Discret", "description": "Ouvre un port en écoute sur la machine, souvent utilisé pour recevoir une connexion entrante." },
+    { "nom": "netstat -tulpn", "categorie": "Réseau", "risque": "Discret", "description": "Affiche les ports en écoute et les connexions réseau actives sur la machine locale." },
+    { "nom": "ss -tulpn", "categorie": "Réseau", "risque": "Discret", "description": "Version moderne de netstat : affiche les sockets réseau actifs et les ports en écoute." },
+
+    { "nom": "gobuster dir -u http://cible.com -w wordlist.txt", "categorie": "Web", "risque": "Bruyant", "description": "Teste une liste de mots pour découvrir des répertoires et fichiers cachés sur un site web." },
+    { "nom": "nikto -h http://cible.com", "categorie": "Web", "risque": "Bruyant", "description": "Scanne un serveur web à la recherche de fichiers dangereux, de mauvaises configurations et de vulnérabilités connues." },
+    { "nom": "sqlmap -u \"http://cible.com/page?id=1\" --dbs", "categorie": "Web", "risque": "Bruyant", "description": "Teste automatiquement une URL pour détecter des injections SQL, puis liste les bases de données accessibles." },
+    { "nom": "ffuf -u http://cible.com/FUZZ -w wordlist.txt", "categorie": "Web", "risque": "Bruyant", "description": "Fuzzing rapide d'une URL pour découvrir des chemins ou paramètres cachés." },
+    { "nom": "curl -I http://cible.com", "categorie": "Web", "risque": "Discret", "description": "Récupère uniquement les en-têtes HTTP d'une page, sans télécharger tout son contenu." },
+
+    { "nom": "nuclei -u http://cible.com -t cves/", "categorie": "Scan de vulnérabilités", "risque": "Bruyant", "description": "Teste une cible contre une bibliothèque de modèles de vulnérabilités connues pour détecter des failles." },
+    { "nom": "searchsploit apache 2.4.49", "categorie": "Scan de vulnérabilités", "risque": "Discret", "description": "Recherche des exploits publics connus correspondant à un logiciel et sa version, dans une base locale." },
+    { "nom": "openvas", "categorie": "Scan de vulnérabilités", "risque": "Bruyant", "description": "Lance un scanner de vulnérabilités complet analysant les services d'une cible pour repérer des failles connues." },
+    { "nom": "whatweb http://cible.com", "categorie": "Scan de vulnérabilités", "risque": "Discret", "description": "Identifie les technologies utilisées par un site web : CMS, framework, serveur, plugins." },
+
+    { "nom": "msfconsole", "categorie": "Exploitation", "risque": "Bruyant", "description": "Lance la console de Metasploit Framework, un outil pour rechercher, configurer et lancer des exploits." },
+    { "nom": "use exploit/multi/handler", "categorie": "Exploitation", "risque": "Discret", "description": "Dans Metasploit, configure un gestionnaire en attente d'une connexion entrante." },
+    { "nom": "use auxiliary/scanner/portscan/tcp", "categorie": "Exploitation", "risque": "Discret", "description": "Dans Metasploit, utilise un module auxiliaire pour scanner les ports ouverts d'une cible." },
+    { "nom": "set RHOSTS 192.168.1.1", "categorie": "Exploitation", "risque": "Discret", "description": "Dans Metasploit, définit l'adresse ou la plage d'adresses cibles pour le module sélectionné." },
+
+    { "nom": "hydra -l admin -P rockyou.txt ssh://192.168.1.1", "categorie": "Cracking", "risque": "Bruyant", "description": "Teste une liste de mots de passe pour deviner les identifiants d'un service par force brute." },
+    { "nom": "john --wordlist=rockyou.txt hash.txt", "categorie": "Cracking", "risque": "Discret", "description": "Tente de retrouver un mot de passe en clair à partir de son empreinte, en testant une liste de mots." },
+    { "nom": "hashcat -m 0 hash.txt rockyou.txt", "categorie": "Cracking", "risque": "Discret", "description": "Casse des empreintes de mots de passe en exploitant la puissance de calcul du processeur ou de la carte graphique." },
+    { "nom": "crunch 8 8 -o wordlist.txt", "categorie": "Cracking", "risque": "Discret", "description": "Génère une liste de mots de passe personnalisée selon des critères de longueur et de caractères définis." },
+
+    { "nom": "sudo -l", "categorie": "Escalade de privilèges", "risque": "Discret", "description": "Liste les commandes que l'utilisateur actuel peut exécuter en tant qu'administrateur." },
+    { "nom": "./linpeas.sh", "categorie": "Escalade de privilèges", "risque": "Bruyant", "description": "Exécute un script d'audit automatisé qui recherche les pistes d'escalade de privilèges possibles." },
+    { "nom": "find / -perm -4000 2>/dev/null", "categorie": "Escalade de privilèges", "risque": "Discret", "description": "Recherche sur tout le système les fichiers ayant le bit SUID actif, souvent exploitables." },
+    { "nom": "getcap -r / 2>/dev/null", "categorie": "Escalade de privilèges", "risque": "Discret", "description": "Liste les fichiers disposant de capabilities Linux spécifiques, parfois exploitables pour élever ses privilèges." },
+
+    { "nom": "crackmapexec smb 192.168.1.0/24 -u admin -p motdepasse", "categorie": "Post-exploitation", "risque": "Bruyant", "description": "Teste des identifiants sur l'ensemble d'un réseau via le protocole SMB, utile pour le mouvement latéral." },
+    { "nom": "impacket-secretsdump domaine/admin:motdepasse@192.168.1.1", "categorie": "Post-exploitation", "risque": "Discret", "description": "Extrait les identifiants et empreintes stockés sur une machine Windows via le réseau." },
+    { "nom": "ssh -L 8080:localhost:80 user@192.168.1.1", "categorie": "Post-exploitation", "risque": "Discret", "description": "Crée un tunnel SSH qui redirige un port distant vers la machine locale, utile pour le pivoting réseau." },
+    { "nom": "responder -I eth0", "categorie": "Post-exploitation", "risque": "Bruyant", "description": "Écoute le réseau local et capture des identifiants transmis en clair ou sous forme de hash." },
+
+    { "nom": "volatility -f memoire.dump imageinfo", "categorie": "Forensics", "risque": "Discret", "description": "Analyse un fichier de dump mémoire pour identifier le système et préparer une investigation plus poussée." },
+    { "nom": "strings fichier_suspect.bin", "categorie": "Forensics", "risque": "Discret", "description": "Extrait les chaînes de texte lisibles contenues dans un fichier binaire, utile pour repérer des indices." },
+    { "nom": "exiftool photo.jpg", "categorie": "Forensics", "risque": "Discret", "description": "Affiche les métadonnées cachées d'un fichier : date, lieu, appareil utilisé." },
+    { "nom": "foremost -i disque.img -o sortie/", "categorie": "Forensics", "risque": "Discret", "description": "Récupère des fichiers supprimés ou fragmentés à partir d'une image disque, selon leurs signatures." },
+
+    { "nom": "sherlock nom_utilisateur", "categorie": "OSINT", "risque": "Discret", "description": "Recherche l'existence d'un nom d'utilisateur donné sur des dizaines de réseaux sociaux et plateformes." },
+    { "nom": "shodan host 192.168.1.1", "categorie": "OSINT", "risque": "Discret", "description": "Interroge la base Shodan pour obtenir des informations publiques déjà collectées sur une adresse IP." },
+    { "nom": "recon-ng", "categorie": "OSINT", "risque": "Discret", "description": "Lance un framework modulaire dédié à la reconnaissance et à la collecte d'informations en sources ouvertes." },
+    { "nom": "google dork: site:exemple.com filetype:pdf", "categorie": "OSINT", "risque": "Discret", "description": "Utilise des opérateurs de recherche avancés sur Google pour trouver des documents ou pages spécifiques indexées." },
+
+    { "nom": "proxychains nmap -sV 192.168.1.1", "categorie": "Anonymisation", "risque": "Discret", "description": "Fait transiter le trafic d'une commande à travers une chaîne de proxys pour masquer l'origine de la connexion." },
+    { "nom": "torify curl http://cible.com", "categorie": "Anonymisation", "risque": "Discret", "description": "Fait passer une commande par le réseau Tor pour anonymiser la connexion." },
+    { "nom": "macchanger -r eth0", "categorie": "Anonymisation", "risque": "Discret", "description": "Change aléatoirement l'adresse MAC de l'interface réseau pour éviter d'être identifié par ce biais." }
 ]

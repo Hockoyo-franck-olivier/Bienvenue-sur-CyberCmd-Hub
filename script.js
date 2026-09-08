@@ -14,6 +14,7 @@ function afficherCommandes(liste) {
                 </div>
                 <p class="nom-commande">${commande.nom}</p>
                 <p class="description-commande">${commande.description}</p>
+                <button class="bouton-copier">Copier</button>
             </div>
         `;
     });
@@ -69,3 +70,17 @@ fetch('commandes.json')
     .catch(erreur => console.error('Erreur de chargement des commandes :', erreur));
 
 document.getElementById('recherche').addEventListener('input', appliquerFiltres);
+
+document.getElementById('grille').addEventListener('click', (evenement) => {
+    if (evenement.target.classList.contains('bouton-copier')) {
+        const carte = evenement.target.closest('.carte-commande');
+        const texteCommande = carte.querySelector('.nom-commande').textContent;
+
+        navigator.clipboard.writeText(texteCommande).then(() => {
+            evenement.target.textContent = 'Copié !';
+            setTimeout(() => {
+                evenement.target.textContent = 'Copier';
+            }, 1500);
+        });
+    }
+});
